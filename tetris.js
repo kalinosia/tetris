@@ -38,7 +38,7 @@ function drawBoard(){//draw
   for(r=0;r<ROW;r++){
     for(c=0;c<COL;c++){
       drawSquare(c,r,board[r][c]);
-@ -20,8 +34,8 @@ function drawBoard(){
+ function drawBoard(){
   }
 }
   drawBoard();
@@ -49,7 +49,7 @@ function drawBoard(){//draw
 const z =[
   [[1,1,0], //z=[0]
   [0,1,1],
-@ -31,7 +45,7 @@ const z =[
+ const z =[
   [0,1,1],
   [0,1,0]],
           
@@ -58,7 +58,7 @@ const z =[
   [1,1,0],
   [0,1,1]],
   
-@ -39,9 +53,11 @@ const z =[
+const z =[
   [1,1,0],
   [1,0,0]] 
 ];
@@ -72,7 +72,7 @@ const pieceColor="orange";
 for(r=0;r<piece.length;r++){
   for(c=0;c<piece.length;c++){
     if(piece[r][c]){
-@ -49,4 +65,226 @@ for(r=0;r<piece.length;r++){
+ for(r=0;r<piece.length;r++){
     }
   }
 };
