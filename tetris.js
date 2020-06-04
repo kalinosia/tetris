@@ -1,8 +1,12 @@
+
+const cvs = document.getElementById("tetris");
 const cvs = document.getElementById("tetris");//canvas z html
 const ctx = cvs.getContext("2d"); //contex-<ctx
 
 ctx.fillRect(0,0, canvas.width, canvas.height);
 
+const ROW=20;
+const COLUMN=10;
 const backgroundcolor="#222";
 
 const ROW=20;   //klasyczny tetris wymiary 
@@ -18,41 +22,48 @@ function drawSquare(x,y,color){//{nr of SQ from the left,right,color) SQ=20px X 
 	ctx.strokeRect(x*SQ,y*SQ,SQ,SQ);
 }
 
+let board=[];
 //tablica utwórz...........................................................................................................
 let board=[];//CREATE the board
 for (r=0;r<ROW;r++){
   board[r]=[];
   for(c=0; c<COLUMN;c++){
+    board[r][c]="white"
     board[r][c]=backgroundcolor;
   }
+}
+function drawBoard(){
 }//rysuj tablicę
 function drawBoard(){//draw
   for(r=0;r<ROW;r++){
     for(c=0;c<COL;c++){
       drawSquare(c,r,board[r][c]);
-    }
+@ -20,8 +34,8 @@ function drawBoard(){
   }
 }
   drawBoard();
+
+  
 //.............................................................................................................................
  /* 
 const z =[
   [[1,1,0], //z=[0]
   [0,1,1],
-  [0,0,0]],
-          
-  [[0,0,1],  //z=[1]
+@ -31,7 +45,7 @@ const z =[
   [0,1,1],
   [0,1,0]],
           
+  [[0,0,0],
   [[0,0,0], //z[2] etc
   [1,1,0],
   [0,1,1]],
   
-  [[0,1,0],
+@ -39,9 +53,11 @@ const z =[
   [1,1,0],
   [1,0,0]] 
 ];
+
+let piece=z[0];
 */
 //draw the tetrominoes ............................................................................................
 /*  let piece=z[0];     //rysowanie w macierzy 1=kolor 0 nie
@@ -61,7 +72,7 @@ const pieceColor="orange";
 for(r=0;r<piece.length;r++){
   for(c=0;c<piece.length;c++){
     if(piece[r][c]){
-      drawSquare(c,r,pieceColor);
+@ -49,4 +65,226 @@ for(r=0;r<piece.length;r++){
     }
   }
 };
