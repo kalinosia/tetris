@@ -1,0 +1,44 @@
+ <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset = "utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title> Tetris</title>
+	
+	<style> <!--CSS tutaj-->
+	body{
+    background-color:#222; 
+    text-align:center; 
+    }
+	 canvas{
+            display: block;
+            margin:0 auto;
+        }
+		   #score{
+            display: inline-block;
+        }
+        div{
+            font-size: 25px;
+            font-weight: bold;
+            font-family: monospace;
+            text-align: center;
+        }
+	</style>
+  </head>
+  <body>
+	<div>This Game Was Created By <a target="_blank" href="https://www.youtube.com/c/codeexplained">Code Explained</a></div><br>
+  
+    <canvas id="tetris" style="border: 3px solid #aaa" width="200" height="400" onload="drawBoard();">
+      Your browser does not support the HTML canvas tag.
+    </canvas>
+	
+	  <div>
+        Score : <div id="score">0</div>
+     </div>
+	
+	
+    <script src="tetris.js"></script>
+	<script src="tetrominoes.js"></script>
+  </body>
+</html>
+
