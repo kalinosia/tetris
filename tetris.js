@@ -1,12 +1,24 @@
 
- document.getElementById("myButton").disabled=false;
-//document.getElementById("tetris").focus=true;//po kliknięciu żeby można było sterować
- function start(){
-	 
+var canvas = document.getElementById("tetris");
+var ctx=canvas.getContext("2d");
+ctx.font="30px Comic Sans MS";
+ctx.fillStyle = "red";
+ctx.textAlign = "center";
+ctx.fillText("Start", canvas.width/2, canvas.height/2);
 
-const cvs = document.getElementById("tetris");
-const ctx = cvs.getContext("2d"); //contex-<ctx
-//context.fillText('Start', 150, 300);	
+//ctx.addEventListener('click', function(event) { ???
+	
+
+// document.getElementById("myButton").disabled=false;
+//document.getElementById("tetris").focus=true;//po kliknięciu żeby można było sterować
+
+function start(){
+	 
+ctx.clearRect(0, 0, canvas.width, canvas.height);
+//const cvs = document.getElementById("tetris");
+//const ctx = cvs.getContext("2d"); //contex-<ctx
+//context.fillText('Start', 150, 300);
+
 
 
 const scoreElement = document.getElementById("score");
@@ -26,6 +38,7 @@ function drawSquare(x,y,color){//{nr of SQ from the left,right,color) SQ=20px X 
 }
 
 
+
 //tablica utwórz...........................................................................................................
 let board=[];//CREATE the board
 for (r=0;r<ROW;r++){
@@ -41,7 +54,14 @@ function drawBoard(){//draw
       drawSquare(c,r,board[r][c]);
 }}}
   drawBoard();
-  
+//...........................................
+const w = 100;
+const h = 100;
+
+ctx.textAlign = "center";
+ctx.textBaseline = "middle";
+ctx.font = `bold 60px Arial, sans-serif`;
+ctx.fillText("Hello word", 0, 0);  
 
 //random piece function............................................................................................
 
@@ -291,4 +311,5 @@ else czasPoziomu=czasPoziomu;
 drop();
 //...............................................................................................................................
 
-}
+ }
+ 

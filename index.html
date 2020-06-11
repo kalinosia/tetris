@@ -6,11 +6,13 @@
     <title> Tetris</title>
 
 	<link rel="stylesheet" type="text/css" href="style.css"/>
+	
+
 </head>
   <body >
 	 <div id="container"  >
   <div id="blok">
-		<canvas id="tetris" style="border: 3px solid #aaa" width="300" height="600" onload="drawBoard();">	</canvas>
+		<canvas id="tetris" style="border: 3px solid #aaa" width="300" height="600" onclick="start()">	</canvas>
 	</div>
      <div id="obok"  >
 	 
@@ -21,11 +23,21 @@
 		</div>
 		
 	</div>
-	
+
+
 	<script src="tetrominoes.js"></script>
 	<script src="tetris.js"></script>
 	
 	<!--
+	<script>
+var canvas = document.getElementById("tetris");
+var ctx=canvas.getContext("2d");
+ctx.font="30px Comic Sans MS";
+ctx.fillStyle = "red";
+ctx.textAlign = "center";
+ctx.fillText("Hello World", canvas.width/2, canvas.height/2);
+</script>
+
 	<script src="tetrisraw.js"></script>
 	<script src="tetris.js"></script>
 	-->
