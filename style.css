@@ -20,7 +20,7 @@ body{
 	padding:12px 25px;
 	text-decoration:none;
 	text-shadow:3px -3px 1px #810e05;
-	margin:10px;
+	margin:50px;
 }
 #myButton:hover {
 	background-color:#f24437;
@@ -41,7 +41,7 @@ body{
             font-weight: bold;
             font-family: monospace;
             text-align: center;
-			margin-top:400px;
+			margin-top:100px;
         }
 		
 		#container
@@ -65,5 +65,8 @@ body{
 			align:center;
 			margin:auto;
 			
+		}
+		#klocek{
+			margin-top:50px;
 		}
 		

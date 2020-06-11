@@ -1,32 +1,37 @@
 
-var canvas = document.getElementById("tetris");
+var canvas = document.getElementById("tetris");//const cvs = document.getElementById("tetris");
 var ctx=canvas.getContext("2d");
-ctx.font="30px Comic Sans MS";
-ctx.fillStyle = "red";
+ctx.font="900 50px  Verdana";
+gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+// Add the colors with fixed stops at 25% of the width.  
+gradient.addColorStop("0", "yellow");
+gradient.addColorStop(".25", "orange");
+gradient.addColorStop(".40", "red");
+gradient.addColorStop(".50", "purple");
+gradient.addColorStop(".60", "blue");
+gradient.addColorStop(".70", "cyan");
+gradient.addColorStop("1.0", "green");
+ctx.fillStyle = gradient;
 ctx.textAlign = "center";
-ctx.fillText("Start", canvas.width/2, canvas.height/2);
+ctx.fillText("S T A R T", canvas.width/2, canvas.height/2);
+ctx.strokeStyle="gray";
+ctx.strokeText("S T A R T", canvas.width/2, canvas.height/2);
+
+
+
 
 //ctx.addEventListener('click', function(event) { ???
-	
-
-// document.getElementById("myButton").disabled=false;
-//document.getElementById("tetris").focus=true;//po kliknięciu żeby można było sterować
 
 function start(){
+	
 	 
 ctx.clearRect(0, 0, canvas.width, canvas.height);
-//const cvs = document.getElementById("tetris");
-//const ctx = cvs.getContext("2d"); //contex-<ctx
-//context.fillText('Start', 150, 300);
-
-
 
 const scoreElement = document.getElementById("score");
-//ctx.fillRect(0,0, canvas.width, canvas.height);
 const backgroundcolor="#111";
 const ROW=20;   //klasyczny tetris wymiary 
 const COLUMN=10; //pamiętając że canvas 200 x 400
-const SQ=30;  //daje nam kwadrat 20x20
+const SQ=30;  //daje nam kwadrat 20x20 zmiana wymiarów
 
 //rysuj kwadrat.....................................................................................................
 function drawSquare(x,y,color){//{nr of SQ from the left,right,color) SQ=20px X 20px
@@ -55,13 +60,7 @@ function drawBoard(){//draw
 }}}
   drawBoard();
 //...........................................
-const w = 100;
-const h = 100;
 
-ctx.textAlign = "center";
-ctx.textBaseline = "middle";
-ctx.font = `bold 60px Arial, sans-serif`;
-ctx.fillText("Hello word", 0, 0);  
 
 //random piece function............................................................................................
 
@@ -88,7 +87,7 @@ function Piece(tetromino,color){
     this.y = -2;
 }
 
-// fill function......................................?????????
+// fill function.....................................
 
 Piece.prototype.fill = function(color){
     for( r = 0; r < this.activeTetromino.length; r++){
@@ -175,7 +174,9 @@ Piece.prototype.rotate = function(){
  
 //................................................................................................................................
 let score = 0;
+
 //........................................................................
+
 Piece.prototype.lock = function(){                        //LOCK() FUNCTION
     for( r = 0; r < this.activeTetromino.length; r++){
         for(c = 0; c < this.activeTetromino.length; c++){
@@ -278,7 +279,7 @@ function CONTROL(event){
 
 //.....................................................................................................................................
 // drop the piece every 1sec 								!!!!!!!!!	CZAS !!!!!!!!!!!
-let czasPoziomu=1500;
+let czasPoziomu=1200;
 
 
 let dropStart = Date.now();
@@ -292,6 +293,7 @@ function drop(){
     }
     if( !gameOver){
         requestAnimationFrame(drop);
+		document.getElementById("tetris").onclick = null
     }
 
 	
@@ -310,6 +312,11 @@ else czasPoziomu=czasPoziomu;
 
 drop();
 //...............................................................................................................................
+//................................................KLOCEK
+var cvs=document.getElementById("klocek");
+var context=cvs.getContext("2d");
 
- }
+//...............................................KLOCEK
+}
+ 
  
