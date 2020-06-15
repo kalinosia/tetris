@@ -73,14 +73,14 @@ function drawSquareSecond(x,y,color){//{nr of SQ from the left,right,color) SQ=2
 let boardSecond=[];//CREATE the board
 for (a=0;a<4;a++){
   boardSecond[a]=[];
-  for(b=0; b<3;b++){
+  for(b=0; b<4;b++){
     boardSecond[a][b]=backgroundcolor;
   }
 }
 
 function drawBoardSecond(){//draw
   for(a=0;a<4;a++){
-    for(b=0;b<3;b++){
+    for(b=0;b<4;b++){
       drawSquareSecond(b,a,boardSecond[a][b]);
 }}}
   drawBoardSecond();
@@ -105,7 +105,22 @@ function randomPiece(){
   //????????????????????????????????????????????????????/
   //???????????????????????????????????????u dołu
 console.log(fP); //...........................................................................................................................................................
+
 /*
+function drawSecond(){
+function futurePiece(tetromino,color){
+    this.tetromino = tetromino;
+    this.color = color;
+    
+    this.tetrominoN = 0; // we start from the first pattern
+    this.activeTetromino = this.tetromino[this.tetrominoN];
+    
+    
+    this.x = 0;
+    this.y = 0;
+}
+}
+
 //const future()=new Array(fP[0],fP[1]);
 //console.log(future[]);
 const newFuturePiece={};
@@ -204,16 +219,34 @@ Piece.prototype.fill = function(color){
             // we draw only occupied squares
             if( this.activeTetromino[r][c]){
                 drawSquare(this.x + c,this.y + r, color); 
-					let u=0;w=0;
-				if((color=="red")||(color=="green")||(color=="purple")||(color=="#CC6600")(color=="yellow")){u=0;w=1;}
-	
-				drawSquareSecond(u + c,w + r, color);  
+				
 				 
             }
         }
     }
+}
+const futureTetromino=fP.tetromino;
+const futureColor=fP.color;
+console.log(fP.tetromino);
+console.log(futureTetromino);
+console.log(futureTetromino[0]);
+const drawFutureTetromino=futureTetromino[0];
 
+function drawSecond(){
 
+const futureTetromino=fP.tetromino;
+const futureColor=fP.color;
+console.log(futureTetromino[0]);
+
+const drawFutureTetromino=futureTetromino[0];	
+	 for( r = 0; r < drawFutureTetromino.length; r++){
+        for(c = 0; c < drawFutureTetromino.length; c++){
+            if( drawFutureTetromino[r][c]){
+				if ((futureColor=="red")||(futureColor=="green")||(futureColor=="purple")||(futureColor=="#CC6600")||(futureColor=="yellow")){u=0;w=1}
+				else{u=0;w=0;}
+                drawSquareSecond(u+ c,w + r, futureColor); }
+}}}
+drawSecond();
 
 // draw a piece to the board.............................................................................................................
 Piece.prototype.draw = function(){ //składnia funkcji:  Piece.prototype.draw = function(){     
@@ -234,10 +267,10 @@ Piece.prototype.moveDown = function(){
         // we lock the piece and generate a new one          
         this.lock(); //jeżeli na dół i lock wtedy generuj nowy       LOCK()LATER
         p = fP;													//nervuiefnoeromovmvomoioeovmeo
-		context.clearRect(0, 0, canvas.width, canvas.height);		//TUTUTUTUTUUTUTFJWEFCNDKN!!!!!!!!!!
+		context.clearRect(0, 0, canvas.width, canvas.height);		
 		drawBoardSecond();
 		fP=randomPiece();
-		
+		drawSecond();
 		
 		
 	}
