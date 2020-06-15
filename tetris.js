@@ -34,15 +34,13 @@ const COLUMN=10; //pamiętając że canvas 200 x 400
 const SQ=30;  //daje nam kwadrat 20x20 zmiana wymiarów
 
 //rysuj kwadrat.....................................................................................................
-function drawSquare(x,y,color){//{nr of SQ from the left,right,color) SQ=20px X 20px
+function drawSquare(x,y,color){//nr of SQ from the left,right,color) SQ=20px X 20px
 	ctx.fillStyle=color;
 	ctx.fillRect(x*SQ,y*SQ,SQ,SQ); //(ile od brzegulewego, ile od brzegu górnego, width,height)
 	
 	ctx.strokeStyle="#222"; //obramowanie
 	ctx.strokeRect(x*SQ,y*SQ,SQ,SQ);
 }
-
-
 
 //tablica utwórz...........................................................................................................
 let board=[];//CREATE the board
@@ -60,7 +58,35 @@ function drawBoard(){//draw
 }}}
   drawBoard();
 //...........................................
+//................................................KLOCEK................................................................................................
+var cvs=document.getElementById("klocek");
+var context=cvs.getContext("2d");
+const SQT=50;
+function drawSquareSecond(x,y,color){//{nr of SQ from the left,right,color) SQ=20px X 20px
+	context.fillStyle=color;
+	context.fillRect(x*SQT,y*SQT,SQT,SQT); //(ile od brzegulewego, ile od brzegu górnego, width,height)
+	
+	context.strokeStyle="#222"; //obramowanie
+	context.strokeRect(x*SQT,y*SQT,SQT,SQT);
+}
 
+let boardSecond=[];//CREATE the board
+for (a=0;a<4;a++){
+  boardSecond[a]=[];
+  for(b=0; b<3;b++){
+    boardSecond[a][b]=backgroundcolor;
+  }
+}
+
+function drawBoardSecond(){//draw
+  for(a=0;a<4;a++){
+    for(b=0;b<3;b++){
+      drawSquareSecond(b,a,boardSecond[a][b]);
+}}}
+  drawBoardSecond();
+//...............................................KLOCEK...............................................................................................
+
+ 
 
 //random piece function............................................................................................
 
@@ -68,12 +94,95 @@ const PIECES = [ [z,"red"], [s,"green"], [t,"yellow"], [o,"blue"], [l,"purple"],
  [i,"cyan"], [j,"#CC6600"]];//https://www.schemecolor.com/tetris-game-color-scheme.php  
  
 function randomPiece(){
-    let r = randomN = Math.floor(Math.random() * PIECES.length) // 0-6 bo tyle element.7
-    return new Piece( PIECES[r][0],PIECES[r][1]);
+    let a= randomN = Math.floor(Math.random() * PIECES.length) // 0-6 bo tyle element.7
+    return new Piece( PIECES[a][0],PIECES[a][1]);
 }
 
-let p = randomPiece();
-  
+ //..........................................................................................................................
+ let first=randomPiece();
+ let p = first;
+  let fP=randomPiece();//???????????????????????????????????????
+  //????????????????????????????????????????????????????/
+  //???????????????????????????????????????u dołu
+console.log(fP); //...........................................................................................................................................................
+/*
+//const future()=new Array(fP[0],fP[1]);
+//console.log(future[]);
+const newFuturePiece={};
+for (m=0;m<2;m++);{
+	newFuturePiece[m]=fP[m];
+}
+console.log(fP[0(0)]);
+
+function futurePiece(tetromino,color){ 					//...........................................................................
+    this.futuretetromino = futuretetromino;											
+    this.futurecolor = futurecolor;	
+	this.futurethistetromino=this.futuretetromino[0];
+}
+		
+
+
+futurePiece.prototype.fill = function(futurecolor){
+    for( a= 0; a <this.futuretetromino.length; a++){
+        for(b = 0; b < this.futuretetromino.length; b++){
+            if( this.futuretetromino[a][b]){
+																							
+				 drawSquareSecond(1 + b,1 + a, futurecolor); 
+            }
+        }
+}}
+let zmiana=true;
+
+function sprawdz(){
+
+if (zmiana==true){
+	futurePiece.prototype.draw = function(){
+	fP.fill(this.futurecolor);}
+	zmiana=false;	
+}
+}
+console.log(zmiana);
+/*
+function futuredraw(){  
+    fP.fill(this.futurecolor);
+	console.log(fP); 
+}
+function drawSecond(){
+	let futurePiece=[];
+	let tetrominoes=[];
+	let color;
+	futurePiece(tetrominoes,color)=fP;
+	this.tetrominoes=(0);
+	kloc=[q,w]
+	 for( a= 0; a < q; a++){
+			for(b = 0; b < w; b++){
+					if( kloc[a][b]){																			
+						drawSquareSecond(1 + b,1 + a, color); 
+						
+	 }}}
+}
+
+ function futurePiece(tetromino,color){ 					//...........................................................................
+    this.tetromino = tetromino;											//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA!!!!!!!!
+    this.color = color;	
+		this.thistetromino=this.tetromino[0];
+}
+futurePiece.prototype.fill = function(color){
+    for( a= 0; a < this.thistetromino.length; a++){
+        for(b = 0; b < this.thistetromino.length; b++){
+            if( this.thistetromino[a][b]){
+																							
+				 drawSquareSecond(1 + b,1 + a, color); 
+            }
+        }
+    }
+}
+
+*/
+     
+
+	
+	
 //.............................................................................................................................
 function Piece(tetromino,color){
     this.tetromino = tetromino;
@@ -94,11 +203,17 @@ Piece.prototype.fill = function(color){
         for(c = 0; c < this.activeTetromino.length; c++){
             // we draw only occupied squares
             if( this.activeTetromino[r][c]){
-                drawSquare(this.x + c,this.y + r, color);
+                drawSquare(this.x + c,this.y + r, color); 
+					let u=0;w=0;
+				if((color=="red")||(color=="green")||(color=="purple")||(color=="#CC6600")(color=="yellow")){u=0;w=1;}
+	
+				drawSquareSecond(u + c,w + r, color);  
+				 
             }
         }
     }
-}
+
+
 
 // draw a piece to the board.............................................................................................................
 Piece.prototype.draw = function(){ //składnia funkcji:  Piece.prototype.draw = function(){     
@@ -118,8 +233,14 @@ Piece.prototype.moveDown = function(){
     }else{
         // we lock the piece and generate a new one          
         this.lock(); //jeżeli na dół i lock wtedy generuj nowy       LOCK()LATER
-        p = randomPiece();
-    }
+        p = fP;													//nervuiefnoeromovmvomoioeovmeo
+		context.clearRect(0, 0, canvas.width, canvas.height);		//TUTUTUTUTUUTUTFJWEFCNDKN!!!!!!!!!!
+		drawBoardSecond();
+		fP=randomPiece();
+		
+		
+		
+	}
     
 }
 //...........................
@@ -146,9 +267,9 @@ Piece.prototype.moveLeft = function(){
 
 Piece.prototype.rotate = function(){   
   // if (tetrmonioN==4)tetrominoN=0;
-	//else{																		!!!!!!!!!!!!!!!!!!!!!!!!SPOSÓB TU !!!!!!!!!
+	//else																	!!!!!!!!!!!!!!!!!!!!!!!!SPOSÓB TU !!!!!!!!!
 	//let tetrominoN = this.tetromino[(this.tetrominoN + 1)];
-	//}
+	//
 	let nextPattern = this.tetromino[(this.tetrominoN + 1)%this.tetromino.length]; 
 	//(0+1)%4=1, (1+1)%4=2...(1+3)%4=4
    
@@ -293,7 +414,9 @@ function drop(){
     }
     if( !gameOver){
         requestAnimationFrame(drop);
-		document.getElementById("tetris").onclick = null
+		document.getElementById("tetris").onclick = null;
+		
+		
     }
 
 	
@@ -311,12 +434,5 @@ else czasPoziomu=czasPoziomu;
 }
 
 drop();
-//...............................................................................................................................
-//................................................KLOCEK
-var cvs=document.getElementById("klocek");
-var context=cvs.getContext("2d");
 
-//...............................................KLOCEK
 }
- 
- 
