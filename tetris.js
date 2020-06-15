@@ -17,13 +17,7 @@ ctx.fillText("S T A R T", canvas.width/2, canvas.height/2);
 ctx.strokeStyle="gray";
 ctx.strokeText("S T A R T", canvas.width/2, canvas.height/2);
 
-
-
-
-//ctx.addEventListener('click', function(event) { ???
-
-function start(){
-	
+function start(){	
 	 
 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -66,7 +60,7 @@ function drawSquareSecond(x,y,color){//{nr of SQ from the left,right,color) SQ=2
 	context.fillStyle=color;
 	context.fillRect(x*SQT,y*SQT,SQT,SQT); //(ile od brzegulewego, ile od brzegu górnego, width,height)
 	
-	context.strokeStyle="#222"; //obramowanie
+	context.strokeStyle="#111"; //obramowanie
 	context.strokeRect(x*SQT,y*SQT,SQT,SQT);
 }
 
@@ -86,7 +80,7 @@ function drawBoardSecond(){//draw
   drawBoardSecond();
 //...............................................KLOCEK...............................................................................................
 
- 
+
 
 //random piece function............................................................................................
 
@@ -99,106 +93,9 @@ function randomPiece(){
 }
 
  //..........................................................................................................................
- let first=randomPiece();
- let p = first;
-  let fP=randomPiece();//???????????????????????????????????????
-  //????????????????????????????????????????????????????/
-  //???????????????????????????????????????u dołu
-console.log(fP); //...........................................................................................................................................................
-
-/*
-function drawSecond(){
-function futurePiece(tetromino,color){
-    this.tetromino = tetromino;
-    this.color = color;
-    
-    this.tetrominoN = 0; // we start from the first pattern
-    this.activeTetromino = this.tetromino[this.tetrominoN];
-    
-    
-    this.x = 0;
-    this.y = 0;
-}
-}
-
-//const future()=new Array(fP[0],fP[1]);
-//console.log(future[]);
-const newFuturePiece={};
-for (m=0;m<2;m++);{
-	newFuturePiece[m]=fP[m];
-}
-console.log(fP[0(0)]);
-
-function futurePiece(tetromino,color){ 					//...........................................................................
-    this.futuretetromino = futuretetromino;											
-    this.futurecolor = futurecolor;	
-	this.futurethistetromino=this.futuretetromino[0];
-}
-		
-
-
-futurePiece.prototype.fill = function(futurecolor){
-    for( a= 0; a <this.futuretetromino.length; a++){
-        for(b = 0; b < this.futuretetromino.length; b++){
-            if( this.futuretetromino[a][b]){
-																							
-				 drawSquareSecond(1 + b,1 + a, futurecolor); 
-            }
-        }
-}}
-let zmiana=true;
-
-function sprawdz(){
-
-if (zmiana==true){
-	futurePiece.prototype.draw = function(){
-	fP.fill(this.futurecolor);}
-	zmiana=false;	
-}
-}
-console.log(zmiana);
-/*
-function futuredraw(){  
-    fP.fill(this.futurecolor);
-	console.log(fP); 
-}
-function drawSecond(){
-	let futurePiece=[];
-	let tetrominoes=[];
-	let color;
-	futurePiece(tetrominoes,color)=fP;
-	this.tetrominoes=(0);
-	kloc=[q,w]
-	 for( a= 0; a < q; a++){
-			for(b = 0; b < w; b++){
-					if( kloc[a][b]){																			
-						drawSquareSecond(1 + b,1 + a, color); 
-						
-	 }}}
-}
-
- function futurePiece(tetromino,color){ 					//...........................................................................
-    this.tetromino = tetromino;											//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA!!!!!!!!
-    this.color = color;	
-		this.thistetromino=this.tetromino[0];
-}
-futurePiece.prototype.fill = function(color){
-    for( a= 0; a < this.thistetromino.length; a++){
-        for(b = 0; b < this.thistetromino.length; b++){
-            if( this.thistetromino[a][b]){
-																							
-				 drawSquareSecond(1 + b,1 + a, color); 
-            }
-        }
-    }
-}
-
-*/
-     
-
-	
-	
-//.............................................................................................................................
+ let first=randomPiece(); //pierwszy losowany
+ let p = first;					//p to nasz piece
+  let fP=randomPiece(); 	//przyszły piece losowany //...........................................................................................................................	
 function Piece(tetromino,color){
     this.tetromino = tetromino;
     this.color = color;
@@ -225,13 +122,7 @@ Piece.prototype.fill = function(color){
         }
     }
 }
-const futureTetromino=fP.tetromino;
-const futureColor=fP.color;
-console.log(fP.tetromino);
-console.log(futureTetromino);
-console.log(futureTetromino[0]);
-const drawFutureTetromino=futureTetromino[0];
-
+//RYSOWANIE PRZYSZŁEGO TETROMINO.................................................................
 function drawSecond(){
 
 const futureTetromino=fP.tetromino;
@@ -299,13 +190,8 @@ Piece.prototype.moveLeft = function(){
  // rotate the piece...............................................................................
 
 Piece.prototype.rotate = function(){   
-  // if (tetrmonioN==4)tetrominoN=0;
-	//else																	!!!!!!!!!!!!!!!!!!!!!!!!SPOSÓB TU !!!!!!!!!
-	//let tetrominoN = this.tetromino[(this.tetrominoN + 1)];
-	//
 	let nextPattern = this.tetromino[(this.tetrominoN + 1)%this.tetromino.length]; 
 	//(0+1)%4=1, (1+1)%4=2...(1+3)%4=4
-   
    let kick = 0; //cofnięcie jeżeli kolizja na razie 0
    
     if(this.collision(0,0,nextPattern)){
@@ -358,7 +244,7 @@ Piece.prototype.lock = function(){                        //LOCK() FUNCTION
             for( y = r; y > 1; y--){  // we move down all the rows above it
                 for( c = 0; c < COLUMN; c++){
                     board[y][c] = board[y-1][c]; //przesuamy w dół czyli w górę bo y=0 top
-                }																	//dokończy ć????????????
+                }																	//dok
             }
             // the top row board[0][..] has no row above it
             for( c = 0; c < COLUMN; c++){
@@ -380,7 +266,7 @@ Piece.prototype.collision = function(x,y,piece){      //KOLIZJA
     for( r = 0; r < piece.length; r++){                
         for(c = 0; c < piece.length; c++){
             // if the square is empty, we skip it
-            if(!piece[r][c]){ 										//?? jeżeli nie backgroundcolor
+            if(!piece[r][c]){ 										//jeżeli nie backgroundcolor
                 continue;
             }
             // coordinates of the piece after movement
