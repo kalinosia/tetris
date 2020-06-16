@@ -311,6 +311,7 @@ function CONTROL(event){
 	}
 	else if (event.keyCode==40){
 		p.moveDown();p.moveDown();//dwa razy zapewnia szybsze spadanie
+		    score += 1;
 	}
 }
 
