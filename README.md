@@ -2,6 +2,7 @@
 My project with javascript.
 I was inspired by example from the internet. 
 I wanted to try my hand at JavaScript.
+## https://kalinosia.github.io/tetris/
 
 <img src="first.png" alt="game">
 
